@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Category(TimeBasedStampModel):
   name = models.CharField(("Category Name"), max_length=50)
   slug = AutoSlugField(
-        populate_from="title", editable=False, always_update=True, blank=True
+        populate_from="name", editable=False, always_update=True, blank=True
     )
   class Meta:
     verbose_name = "Category"
