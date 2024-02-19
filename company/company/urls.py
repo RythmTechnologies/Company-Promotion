@@ -23,6 +23,7 @@ from apps.main.mixin import robots_txt
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.main.urls')),
+    path('blog', include('apps.blog.urls')),
     path('robots.txt', robots_txt),
 ]
 

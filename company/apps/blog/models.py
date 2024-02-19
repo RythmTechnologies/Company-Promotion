@@ -9,12 +9,19 @@ class Category(TimeBasedStampModel):
   slug = AutoSlugField(
         populate_from="name", editable=False, always_update=True, blank=True
     )
+
+
+  def blog_count(self):
+        return Blog.objects.filter(category=self).count()
+
   class Meta:
     verbose_name = "Category"
     verbose_name_plural = "Categories"
 
   def __str__(self) -> str:
     return self.name
+
+
 
 class Label(TimeBasedStampModel):
   name = models.CharField(("Label Name"), max_length=50)

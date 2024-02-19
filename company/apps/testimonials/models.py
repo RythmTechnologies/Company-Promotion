@@ -7,7 +7,7 @@ class Testimimonials(TimeBasedStampModel):
   author = models.CharField(("Author"), max_length=150)
   title = models.CharField(("Title"), max_length=150)
   image = models.ImageField(("Image"), upload_to="testimoninials/", height_field=None, width_field=None, max_length=None)
-  star = models.PositiveIntegerField(("Star Point"),default = 1, validator = [MaxValueValidator(5)])
+  star = models.PositiveIntegerField(("Star Point"),default = 1, validators = [MaxValueValidator(5)])
   content = HTMLField(("Testimonial Content"), max_length = 400)
 
   class Meta:
