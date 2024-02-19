@@ -1,6 +1,7 @@
-from django.urls import path
-from .views import homepage
+from django.urls import path,include
+from .views import homepage,user_login
 
 urlpatterns = [
     path('', homepage, name="homepage"),
+    path('auth/', include('allauth.urls')),
 ]
