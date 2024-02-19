@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from apps.main.mixin import HttpRequest, HttpResponse
 from .models import Blog, Category
 
@@ -17,8 +17,11 @@ def site_blog(request: HttpRequest) -> HttpResponse:
 def site_single_blog(request: HttpRequest, slug: str) -> HttpResponse:
   context = {}
   blog = Blog.objects.filter(slug=slug).first()
-  context["blog"] = blog
+  posts = Blog.objects.all()
   category = Category.objects.all()
+
+  context["posts"] = posts
+  context["blog"] = blog
   context["categories"] = category
 
   return render(request, "pages/blog-details.html", context)

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Giriş Yap{% endblock title %}
+
+{% block seo %}
+<meta content="Giriş sayfası açıklaması" name="description">
+<meta content="giriş, kullanıcı girişi, site giriş" name="keywords">
+{% endblock seo %}
+
+{% block site-content %}
+<style>
+  .bg-image {
+      background-image: url('{% static "img/hero-carousel/hero-carousel-1.jpg" %}');
+      background-size: cover;
+      background-position: center;
+  }
+</style>
+
+    <div class="row justify-content-center bg-image ">
+        <div class="col-md-6">
+            <div class="card " style="margin-top: 150px;">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Giriş Yap</h2>
+                    <form method="post" action="{% url 'account_login' %}">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="login" class="form-label">Kullanıcı adı</label>
+                            <input type="username" class="form-control" id="login" name="login" required autofocus>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Şifre</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Giriş Yap</button>
+                        </div>
+                    </form>
+                    <div class="text-center mt-3">
+                        <a href="{% url 'account_reset_password' %}">Şifremi Unuttum</a>
+                    </div>
+                    <div class="text-center mt-2">
+                        Hesabınız yok mu? <a href="{% url 'account_signup' %}">Kaydolun</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock site-content %}
